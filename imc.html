@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>carlo</title>
+    <style>
+        imput{
+            display: block;
+            margin: 100px;
+        }
+</style>
+</head>
+<body>
+    <input type="number" value="peso" id="npeso">
+    <input type="number" value="altura" id="naltura">
+    <button onclick="Calculo()">calcular</button>
+    <h2 id = "calcular"> </h2>
+ <script type="text/javascript">
+    function Calculo() {
+        var peso= npeso.value;
+        var altura= naltura.value;
+        var imc= peso/(altura*altura);
+        if (imc<24.9){
+            calcular.innerText = "normal xd" 
+        }else{
+            calcular.innerText = "sobrepeso"
+        }
+    }
+ </script>
+</body>
+</html>
