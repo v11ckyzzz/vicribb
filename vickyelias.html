@@ -1,0 +1,104 @@
+
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversor de Unidades</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    label, select, input, button {
+      display: block;
+      margin: 10px 0;
+      width: 100%;
+    }
+    #resultado {
+      font-weight: bold;
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Conversor de Unidades de Longitud</h2>
+
+  <label for="valor">Valor a convertir:</label>
+  <input type="number" id="valor" placeholder="Ej: 1.5">
+
+  <label for="unidadOrigen">Unidad de origen:</label>
+  <select id="unidadOrigen">
+    <option value="km">Kilómetros</option>
+    <option value="m">Metros</option>
+    <option value="cm">Centímetros</option>
+  </select>
+
+  <label for="unidadDestino">Unidad de destino:</label>
+  <select id="unidadDestino">
+    <option value="km">Kilómetros</option>
+    <option value="m">Metros</option>
+    <option value="cm">Centímetros</option>
+  </select>
+
+  <button onclick="convertir()">Convertir</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    function convertir() {
+      const valor = parseFloat(document.getElementById("valor").value);
+      const unidadOrigen = document.getElementById("unidadOrigen").value;
+      const unidadDestino = document.getElementById("unidadDestino").value;
+
+      if (isNaN(valor)) {
+        document.getElementById("resultado").innerText = "Por favor ingresa un número válido.";
+        return;
+      }
+
+      // Convertir a metros primero
+      let valorEnMetros;
+
+      switch (unidadOrigen) {
+        case "km":
+          valorEnMetros = valor * 1000;
+          break;
+        case "m":
+          valorEnMetros = valor;
+          break;
+        case "cm":
+          valorEnMetros = valor / 100;
+          break;
+      }
+
+      // Convertir de metros a unidad destino
+      let resultado;
+
+      switch (unidadDestino) {
+        case "km":
+          resultado = valorEnMetros / 1000;
+          break;
+        case "m":
+          resultado = valorEnMetros;
+          break;
+        case "cm":
+          resultado = valorEnMetros * 100;
+          break;
+      }
+
+      document.getElementById("resultado").innerText =
+        `${valor} ${unidadOrigen} = ${resultado} ${unidadDestino}`;
+    }
+  </script>
+
+</body>
+</html>
+
+    
+</body>
+</html>
